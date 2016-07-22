@@ -1,0 +1,55 @@
+<!-- TO-DO APPLICATION -->
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+	<title>TO_DO APP</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- jQuery  -->
+	<script type="text/javascript" src="../../node_modules/jquery-2.1.4.js"></script>
+	<!-- bootstrap -->
+	<script type="text/javascript" src="../../node_modules/bootstrap/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="../../node_modules/bootstrap/css/bootstrap.css">
+	<!-- angular modules -->
+	<script type="text/javascript" src="../../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../../node_modules/angular-resource/angular-resource.min.js"></script>
+	<!-- controllers -->
+	<script type="text/javascript" src="controller/controller.js"></script>
+
+</head>
+<body>
+
+<!-- index view -->
+<center><h1 class="wells">TO-DO LIST</h1></center>
+<div ng-controller="todoController">
+<center>
+	<form ng-submit="insert()">
+	<table>
+			<tr><td><input type="text" placeholder="add notes" ng-model="todoname" class="form" required></td></tr>
+			<tr><td><textarea ng-model="descriptionvalue" required></textarea></td></tr>
+			<tr><td><input type="text" ng-model="timevalue" required></td></tr>
+			<tr><td><button type="submit" class="btn btn-primary">insert</button></td></tr>
+	</table>
+	</form>
+</center>
+<div class="panel-group" >
+<div class="panel panel-warning" ng-repeat="value in lists">
+      <div class="panel-heading">{{value.name}}</div>
+      <div class="panel-body">
+      Description:{{value.description}}<br>
+      Time:{{value.time}}
+      </div>
+      <div class="panel-info">
+      <button id={{value._id}} onclick="remove(this.id)" class="btn btn-danger">remove</button>
+      </div>
+
+    </div>
+
+
+</div>
+</div>
+
+
+</body>
+</html>
