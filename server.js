@@ -9,6 +9,10 @@ var mongoose=require('mongoose');
 mongoose.connect('mongodb://localhost:27017/todo');
 
 	app.use(bodyParser());
+	app.use( bodyParser.json() ); 
+	app.use(bodyParser.urlencoded({    
+                                extended: true
+                })); 
 
 
 	// routes
@@ -30,6 +34,7 @@ mongoose.connect('mongodb://localhost:27017/todo');
 	// app.post('/app',modelcontroller.insert);
 	app.get('/app',modelcontroller.list);
 	app.post('/app',modelcontroller.insert);
+	app.delete('/app/:id',modelcontroller.delete);
 
 	// port start
 	app.listen(port,function(){

@@ -1,55 +1,80 @@
-<!-- TO-DO APPLICATION -->
-<!DOCTYPE html>
-<html ng-app='app'>
-<head>
-	<title>TO_DO APP</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE-edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- jQuery  -->
-	<script type="text/javascript" src="../../node_modules/jquery-2.1.4.js"></script>
-	<!-- bootstrap -->
-	<script type="text/javascript" src="../../node_modules/bootstrap/js/bootstrap.js"></script>
-	<link rel="stylesheet" href="../../node_modules/bootstrap/css/bootstrap.css">
-	<!-- angular modules -->
-	<script type="text/javascript" src="../../node_modules/angular/angular.min.js"></script>
-	<script type="text/javascript" src="../../node_modules/angular-resource/angular-resource.min.js"></script>
-	<!-- controllers -->
-	<script type="text/javascript" src="controller/controller.js"></script>
+	<!-- TO-DO APPLICATION -->
+	<!DOCTYPE html>
+	<html ng-app='app'>
+	<head>
+		<title>TO_DO APP</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- jQuery  -->
+		<script type="text/javascript" src="../../node_modules/jquery-2.1.4.js"></script>
+		<!-- bootstrap -->
+		<script type="text/javascript" src="../../node_modules/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../node_modules/bootstrap/js/moment.js"></script>
+		<link rel="stylesheet" href="../../node_modules/bootstrap/css/bootstrap.css">
+		<!-- <link rel="stylesheet" href="../../node_modules/bootstrap/css/font-awesome.min.css"> -->
 
-</head>
-<body>
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.css"> -->
+		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> -->
+		<!-- angular modules -->
+		<script type="text/javascript" src="../../node_modules/angular/angular.min.js"></script>
+		<script type="text/javascript" src="../../node_modules/angular-resource/angular-resource.min.js"></script>
+		<!-- controllers -->
+		<script type="text/javascript" src="controller/controller.js"></script>
 
-<!-- index view -->
-<center><h1 class="wells">TO-DO LIST</h1></center>
-<div ng-controller="todoController">
-<center>
-	<form ng-submit="insert()">
-	<table>
-			<tr><td><input type="text" placeholder="add notes" ng-model="todoname" class="form" required></td></tr>
-			<tr><td><textarea ng-model="descriptionvalue" required></textarea></td></tr>
-			<tr><td><input type="text" ng-model="timevalue" required></td></tr>
-			<tr><td><button type="submit" class="btn btn-primary">insert</button></td></tr>
-	</table>
-	</form>
-</center>
-<div class="panel-group" >
-<div class="panel panel-warning" ng-repeat="value in lists">
-      <div class="panel-heading">{{value.name}}</div>
-      <div class="panel-body">
-      Description:{{value.description}}<br>
-      Time:{{value.time}}
-      </div>
-      <div class="panel-info">
-      <button id={{value._id}} onclick="remove(this.id)" class="btn btn-danger">remove</button>
-      </div>
+	</head>
+	<body>
 
-    </div>
+	<!-- index view -->
+	<div>
+	<center><h1 class="container jumbotron">TO-DO LIST</h1></center>
+	</div>
+	<div ng-controller="todoController">
+	<center  class="container well">
+		<form class="form" ng-submit="insert()">
+		<br>
+		
+			 <div class="col-sm-5"><input type="text" placeholder="title" ng-model="todoname" class="form-control input input-lg" required></div> 
+			 <div class="col-sm-5"><input type="text" placeholder="description" ng-model="descriptionvalue" class="form-control input input-lg" required> </div>
+			 <!-- <div class="col-sm-3"><div class='input-group date' id='datetimepicker1'>
+	                    <input type='text' class="form-control input-lg" ng-model="timevalue" />
+	                    <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                </div> </div> -->
+				<!-- <tr><td><input type="text" ng-model="timevalue">  -->
+			 <button type="submit" class="btn btn-primary " style="font-size:1.5em;width:4em;" ><i class=" glyphicon glyphicon-cloud-upload"></i> </button> 
+			 
+		</table>
+		</form>
+	</center><br>
+	<div class="container well">
+	<div >
+	<h3> SAVED NOTES </h3> 
+	<div class="panel panel-warning" ng-repeat="value in lists">
+	      <div class="panel panel-heading">
+	      	<h4>{{value.name}}</h4>
+	      
+
+	      </div>
+	      <div class="panel-body">
+	      <br>
+	      Description:{{value.description}}<br>
+	      Time:{{value.time}}
+	      <button style="float:right;height:2em" data={{value._id}} ng-click="remove($event)" class="btn btn-danger"><i class=" glyphicon glyphicon-minus"></i></button>
+	      <br>
+	      </div>
+	      <div class="panel-footer">
+	      
+	      </div>
+
+	    </div>
+	    
+	    </div>
 
 
-</div>
-</div>
+	</div>
+	</div>
 
-
-</body>
-</html>
+	</body>
+	</html>
